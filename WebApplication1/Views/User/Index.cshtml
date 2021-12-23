@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "User List";
+}
+
+@model IEnumerable<User>
+
+<div>
+    <div class="card">
+        <div class="card-body">
+            <div class="text-right">
+                <a class="btn btn-primary" href="/User/Create">Add new user</a>
+            </div>
+            <h3>User List</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(Model.Count() == 0) {
+                        <tr>
+                            <td colspan="5" class="text-center">No User Found</td>
+                        </tr>
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Detail", "Detail", new { id = item.Id }, new { @class = "btn btn-secondary" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

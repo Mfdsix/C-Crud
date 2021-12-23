@@ -1,0 +1,39 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Delete User";
+}
+
+<h1>Delete</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Username)
+            <hr />
+        </dd>
+        <dt class="col-sm-2">
+        </dt>
+        <dd class="col-sm-10">
+            <h3>Are you sure want to delete this user ?</h3>
+        </dd>
+        <dt class="col-sm-2">
+        </dt>
+        <dd class="col-sm-10">
+            <form action="/User/DeleteById/@Model.Id" method="post">
+                <button class="btn btn-danger">Yes</button>
+            </form>
+        </dd>
+    </dl>
+
+    <hr />
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
